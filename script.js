@@ -1,14 +1,13 @@
 //HAMBURGER MENU TOGGLE
 
 const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-links');
+const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
 //CLOSE MENU ON LINK CLICK
-
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -16,7 +15,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 //SCROLL ANIMATION
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -25,7 +23,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.product-card, #about #contact').forEach(element => {
-    el.classList.add('hidden');
-    observer.observe(el);
+document.querySelectorAll('.product-card, #about, #contact').forEach(element => {
+    element.classList.add('hidden');
+    observer.observe(element);
 });
