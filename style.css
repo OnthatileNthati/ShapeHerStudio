@@ -429,3 +429,39 @@ footer p{
     border-bottom: 1px solid var(--nude);
     z-index: 99;
 }
+
+.order-form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+.order-form input, .order-form select{
+    padding: 14px;
+    border: 1px solid var(--nude);
+    background-color: var(--light-grey);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--charcoal);
+}
+
+.order-form input:focus, .order-form select:focus{
+    outline: none;
+    border-color: var(--rose);
+}
+
+.order-form .btn{
+margin-top: 10px;
+opacity: 1;
+animation: none;
+}
+
+.order-note{
+    margin-top: 12px;
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 1px;
+}
