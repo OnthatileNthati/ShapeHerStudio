@@ -44,3 +44,15 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 
     window.open(whatsappUrl, '_blank');
 });
+
+//scroll behaviour for smooth scrolling on anchor links
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
