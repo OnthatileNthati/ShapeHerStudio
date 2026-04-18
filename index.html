@@ -23,7 +23,14 @@
         </ul>
         
         <div class="hamburger"> &#9776; </div>
-     </nav>
+
+              <!--CART-->
+        <div class="cart-icon" id="cartIcon">
+            &#128722;
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    
+    </nav>
 
 <section class="hero">
     <div class="hero-content">
@@ -43,28 +50,60 @@
                 <img src="images/D lift push-up bra.jpg" alt="D Lift Push-Up Bra">
                 <h3>D Lift Push-Up Bra</h3>
                 <p>Enhance your silhouette with our signature push-up design.</p>
-                <a href="#contact" class="btn">Order Now</a>
+                <select class="size-select">
+                    <option value=""> Select Size</option>
+                    <option value="XS">Extra Small (XS)</option>
+                    <option value="S"> Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                </select>
+                <button class="btn add-to-cart-btn" onclick="addToCart(1, this.previousElementSibling.value)">Add to cart</button>
             </div>
 
             <div class="product-card">
                 <img src="images/super sharp bodysuit.jpg" alt="Super Sharp Bodysuit">
                 <h3>Super Sharp Bodysuit</h3>
                 <p>Seamless compression bodysuit.</p>
-                <a href="#contact" class="btn">Order Now</a>
+                <select class="size-select">
+                    <option value=""> Select Size</option>
+                    <option value="XS">Extra Small (XS)</option>
+                    <option value="S"> Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                </select>
+                <button class="btn add-to-cart-btn" onclick="addToCart(1, this.previousElementSibling.value)">Add to cart</button>
             </div>
 
             <div class="product-card">
-                <img src="images/SS jumpsuit.jpg" alt="Super Sharp Jumpsuit">
-                <h3>Super Sharp Jumpsuit</h3>
+                <img src="images/SS jumpsuit.jpg" alt="Super Shaper Jumpsuit">
+                <h3>Super Shaper Jumpsuit</h3>
                 <p>Full body sculpting for a seamless, flattering fit.</p>
-                <a href="#contact" class="btn">Order Now</a>
+                <select class="size-select">
+                    <option value=""> Select Size</option>
+                    <option value="XS">Extra Small (XS)</option>
+                    <option value="S"> Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                </select>
+                <button class="btn add-to-cart-btn" onclick="addToCart(1, this.previousElementSibling.value)">Add to cart</button>
             </div>
 
             <div class="product-card">
                 <img src="images/SS fajah.jpg" alt="Super Sharp Fajah">
                 <h3>Super Sharp Fajah</h3>
                 <p>High waist hip enhancing shaper with lace trim finish.</p>
-                <a href="#contact" class="btn">Order Now</a>
+                <select class="size-select">
+                    <option value=""> Select Size</option>
+                    <option value="XS">Extra Small (XS)</option>
+                    <option value="S"> Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                </select>
+                <button class="btn add-to-cart-btn" onclick="addToCart(1, this.previousElementSibling.value)">Add to cart</button>
             </div>
         </div>
         </section>
@@ -137,7 +176,35 @@
     </footer>
 
 
+
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+        <h3>Your Cart</h3>
+        <span class="close-cart" id="closeCart">&#10005;</span>
+    </div>
+
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-footer">
+    <p class="cart-total">Total: R<span id="cartTotal"> 0</span></p>
+    <button class="btn" id="checkoutBtn" onclick="goToCheckout()">Checkout</button>
+    </div>
+    </div>
+
 <script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

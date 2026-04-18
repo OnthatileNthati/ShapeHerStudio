@@ -1,5 +1,170 @@
-//HAMBURGER MENU TOGGLE
+//PRODUCTS 
+const products = [
+ {
+        id: 1,
+        name: "D lift Push-up Bra",
+        price: 350,
+        image: "images/D lift push-up bra.jpg"
+ },
+ 
+{
+    id: 2,
+    name: "Super Shaper Bodysuit",
+    price: 450, 
+    image: "images/super shaper bodysuit.jpg"
+},
 
+{
+    id: 3,
+    name: "Super Sharp Jumpsuit",
+    price: 550, 
+    image: "images/ SS jumpsuit.jpg"
+}, 
+
+{
+    id: 4,
+    name: "Super Sharp Fajah",
+    price: 380, 
+    image: "images/SS fajah.jpg"
+}
+];
+
+
+let cart =[]
+function updateCartCount(){
+    const total = cart.reduce((sum,item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').textContent = total;
+}
+
+function addToCart(productId, size){
+    if(!size){
+        alert('Please select a size')
+        return;
+    }
+
+    const product = products.find(p => p.id === productId);
+    const existingItem = cart.find(item => item.product.id === productId && item.size === size);
+
+    if(existingItem){
+        existingItem.quantity++;
+    } else {
+        cart.push({product, size, quantity: 1})
+    }
+
+    updateCartCount();
+    renderCart()
+}
+
+function renderCart(){
+    const cartItems = document.getElementById('cartItems')
+    const cartTotal = document.getElementById('cartTotal')
+
+    cartItems.innerHTML = '';
+
+    if(cart.length === 0){
+        cartItems.innerHTML = '<p style="color: #888; font-size: 13px;">Your cart is empty</p>';
+        cartTotal.textContent= 0;
+        return;
+
+    }
+
+    let total = 0;
+    cart.forEach(item => {
+        total += item.product.price*item.quantity;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+        <img src="${item.product.image}" alt="${item.product.name}">
+        <div class="cart-item-name">
+        <p class="cart-item-name">${item.product.name}</p>
+        <p class="cart-item-size">${item.size}</p>
+        <p class="cart-item-price">R${item.product.price}</p>
+        </div>
+
+        <div class="cart-item-qty">
+        <span>Qty: ${item.quantity}</span>
+        <button class="remove-btn" onclick="removeFromCart(${item.product.id}, '${item.size}')">Remove</button>
+        </div>
+        
+        `;
+        cartItems.appendChild(div)
+    });
+
+    cartTotal.textContent =total;
+}
+
+function removeFromCart(productId, size){
+    cart = cart.filter(item => !(item.product.id ===productId && item.size === size));
+    updateCartCount()
+    renderCart();
+}
+
+//CHECKOUT SCRPT
+
+function goToCheckout(){
+    if(cart.length === 0){
+        alert('Ýour cart is empty')
+    }
+
+    const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+
+    const itemList  = cart.map(item => `${item.product.name} (${item.size}) x${item.quantity}`).join(`, `);
+
+    const form = document.createElement('form')
+    form.method = 'POST'; 
+    form.action = '	https://sandbox.payfast.co.za/eng/process'
+
+    const fields  ={
+        merchant_id: '10047947',
+        merchant_key: '	bo1zjih1q9o8m',
+        amount: total.toFixed(2),
+        item_name: 'ShapeHer Order',
+        item_description:'itemList'
+    };
+
+    Object.keys(fields). forEach(key => {
+        const input = document.createElement('input')
+        input.type = 'hidden';
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+
+//CART FUNCTION
+document.addEventListener('DOMContentLoaded', () => {
+const cartDrawer = document.getElementById('cartDrawer');
+const cartOverlay = document.getElementById('cartOverlay');
+const cartIcon = document.getElementById('cartIcon');
+const closeCart = document.getElementById('closeCart');
+
+cartIcon.addEventListener('click', () => {
+    console.log('cart icon clicked')
+    cartDrawer.classList.add ('open');
+    cartOverlay.classList.add ('open');
+});
+
+closeCart.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+});
+
+cartOverlay.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+});
+
+});
+
+
+
+
+//HAMBURGER MENU TOGGLE
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
