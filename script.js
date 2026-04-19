@@ -83,8 +83,9 @@ function renderCart(){
         </div>
 
         <div class="cart-item-qty">
-        <span>Qty: ${item.quantity}</span>
-        <button class="remove-btn" onclick="removeFromCart(${item.product.id}, '${item.size}')">Remove</button>
+          <button class="qty-btn" onclick="changeQty(${item.product.id}, '${item.size}', -1)">-</button>
+          <span>${item.quantity}</span>
+          <button class="qty-btn" onclick="changeQty(${item.product.id}, '${item.size}', 1)">+</button>
         </div>
         
         `;
@@ -98,6 +99,20 @@ function removeFromCart(productId, size){
     cart = cart.filter(item => !(item.product.id ===productId && item.size === size));
     updateCartCount()
     renderCart();
+}
+
+function changeQty(productId, size, change){
+const item  = cart.find(item => item.product.id === productId && item.size === size);
+if(item){
+    item.quantity += change; 
+    if(item.quantity <= 0){
+        removeFromCart(productId, size);
+        return;
+    }
+}
+updateCartCount();
+renderCart();
+
 }
 
 //CHECKOUT SCRPT
@@ -193,22 +208,6 @@ document.querySelectorAll('.product-card, #about, #contact').forEach(element => 
     observer.observe(element);
 });
 
-//contact form submission
-
-document.getElementById('orderForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const product = document.getElementById('product').value;
-    const size = document.getElementById('size').value;
-    const phone = document.getElementById('phone').value;
-
-    //whatsapp message formatting
-    const message = `Hi, my name is ${name}. I would like to order the ${product} in size ${size}. Please contact me at ${phone} to confirm my order.`;
-    const whatsappUrl = `https://wa.me/+27721083681?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, '_blank');
-});
 
 //scroll behaviour for smooth scrolling on anchor links
 
