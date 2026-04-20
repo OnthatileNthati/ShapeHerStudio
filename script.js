@@ -11,14 +11,14 @@ const products = [
     id: 2,
     name: "Super Shaper Bodysuit",
     price: 450, 
-    image: "images/super shaper bodysuit.jpg"
+    image: "images/super sharp bodysuit.jpg"
 },
 
 {
     id: 3,
     name: "Super Sharp Jumpsuit",
     price: 550, 
-    image: "images/ SS jumpsuit.jpg"
+    image: "images/SS jumpsuit.jpg"
 }, 
 
 {
