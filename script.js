@@ -16,14 +16,14 @@ const products = [
 
 {
     id: 3,
-    name: "Super Sharp Jumpsuit",
+    name: "SS Jumpsuit",
     price: 550, 
     image: "images/SS jumpsuit.jpg"
 }, 
 
 {
     id: 4,
-    name: "Super Sharp Fajah",
+    name: "SS Fajah",
     price: 380, 
     image: "images/SS fajah.jpg"
 }
