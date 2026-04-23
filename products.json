@@ -1,0 +1,30 @@
+[{
+        "id": 1,
+        "name": "D lift Push-up Bra",
+        "price": 350,
+        "image": "images/D lift push-up bra.jpg"
+ },
+ 
+{
+    "id": 2,
+    "name": "Super Shaper Bodysuit",
+    "price": 450, 
+    "image": "images/super sharp bodysuit.jpg"
+},
+
+{
+    "id": 3,
+    "name": "SS Jumpsuit",
+    "price": 550, 
+    "image": "images/SS jumpsuit.jpg"
+}, 
+
+{
+    "id": 4,
+    "name": "SS Fajah",
+    "price": 380,
+    "image": "images/SS fajah.jpg"
+}
+]
+
+
